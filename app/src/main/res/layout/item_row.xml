@@ -19,6 +19,7 @@
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="Data will be displayed here"
         android:layout_gravity="center_horizontal" />
     </androidx.cardview.widget.CardView>

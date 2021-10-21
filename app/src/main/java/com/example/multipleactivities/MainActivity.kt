@@ -1,12 +1,11 @@
 package com.example.multipleactivities
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
     lateinit var ETname: EditText
@@ -29,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         saveBtn.setOnClickListener {
             if (!cb.isChecked)
                 //dialog
-                Toast.makeText(applicationContext, "Check agree!!", Toast.LENGTH_SHORT).show()
+                showdialog()
+                //Toast.makeText(applicationContext, "Check agree!!", Toast.LENGTH_SHORT).show()
             else {
                 val intent = Intent(this, Confirm::class.java)
                 intent.putExtra(
@@ -42,5 +42,23 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+    private fun showdialog(){
+            // first we create a variable to hold an AlertDialog builder
+            val dialogBuilder = AlertDialog.Builder(this)
+            // here we set the message of our alert dialog
+            dialogBuilder.setMessage("Check agree!!")
+                    // positive button text and action
+                    .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, id ->
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    })
+            // create dialog box
+            val alert = dialogBuilder.create()
+            // set title for alert dialog box
+            alert.setTitle("Alert Rule")
+            // show alert dialog
+            alert.show()
     }
 }
